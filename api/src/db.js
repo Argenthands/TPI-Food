@@ -39,6 +39,7 @@ const { Recipe, Diet } = sequelize.models;
 Recipe.belongsToMany(Diet, {through: "Recipe_Diet", timestamps: false});
 Diet.belongsToMany(Recipe, {through: "Recipe_Diet", timestamps: false});
 
+
 /*
 Recipe.hasMany(Diet, {foreingKey: 'RecipeId', DietKey: 'id'})
 Diet.hasOne(Recipe)
@@ -49,3 +50,4 @@ module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };
+//const { Recipe, Diet, Recipe_Diet } = require('../db');

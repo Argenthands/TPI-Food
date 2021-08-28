@@ -1,9 +1,11 @@
 const axios = require('axios');
 const { response } = require('../app');
-const {} = require('../db');
+const { Recipe, Diet, Recipe_Diet } = require('../db');
+
 const {
     URL_ALL,
     API_KEY1,
+    API_KEY2,
   } = process.env;
 
 
@@ -20,14 +22,33 @@ const print = ()=>{
 
 //Funcion para cargar en el Louder
 const getAllRecipesFromAPI = async ()=>{
-    const allRecipes = await axios.get(`${URL_ALL}?apiKey=${API_KEY1}&number=${RESULT_NUMBER}&addRecipeInformation=${ADD_INFO}`)
-    .then(response => response.data.results)
-    .then(results =>{
-        results.forEach(element => {
-            console.log(element)
+    try{
+
+        const allRecipes = await axios.get(`${URL_ALL}?apiKey=${API_KEY1}&number=${RESULT_NUMBER}&addRecipeInformation=${ADD_INFO}`)
+        .then(response => response.data.results)
+        .then(results =>{
+            results.forEach(async element => {
+                let arrayInstructions = element.analyzedInstructions
+
+                
+                console.log('el tipo de dato es',typeof(arrayInstructions), arrayInstructions)
+    
+                await Recipe.create({
+                    id: element.id,
+                    title: element.title,
+                    image: element.image,
+                    //summary: element.summary,
+                    spoonacularScore: element.spoonacularScore,
+                    healthScore: element.healthScore,
+                    //steps: arraySteps
+                })
+            })
         })
-    })
-    .catch(error => console.log('ERROR',error))
+        .catch(error => console.log('ERROR',error))
+    }
+    catch (error){
+        console.error('error',error)
+    }
 }
 
 

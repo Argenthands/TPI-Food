@@ -18,8 +18,8 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     summary: { // propiedad de primer orden
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.TEXT, //tengo problemas con la extencion del texto
+      allowNull: true // debe ser false
     },
     spoonacularScore: { // propiedad de primer orden
       type: DataTypes.FLOAT,
@@ -29,8 +29,8 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true
     },
-    instructions: { //propiedad de primer orden
-      type: DataTypes.STRING,
+    steps: { //propiedad de primer orden
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true
     }
   },{
