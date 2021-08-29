@@ -32,12 +32,13 @@ const getAllRecipesFromAPI = async ()=>{
                 let pathToCook = []
                 if(arrayInstructions){
                     for( key in (arrayInstructions.steps)){
-                        console.log('Step ---->',arrayInstructions.steps[key].step)
-                        //pathToCook.push(arrayInstructions.steps[key].step)
+                        //console.log('Step ---->',arrayInstructions.steps[key].step)
+                        pathToCook.push(arrayInstructions.steps[key].step)
                     }
                 }
                 let arrayDiets = element.diets //<---- findOrCreate y coloca en la tabla. Luego cargar en la intermedia la id de la receta y de la dieta
                 console.log("----------------------------------------")
+                console.log(pathToCook.length)
 
 
 
@@ -71,7 +72,7 @@ const getAllRecipesFromAPI = async ()=>{
                     summary: element.summary,
                     spoonacularScore: element.spoonacularScore,
                     healthScore: element.healthScore,
-                    //steps: arraySteps
+                    steps: pathToCook
                 })
             })
         })
