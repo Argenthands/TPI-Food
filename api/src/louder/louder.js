@@ -9,7 +9,7 @@ const {
   } = process.env;
 
 
-const RESULT_NUMBER = '3';
+const RESULT_NUMBER = '2';
 const ADD_INFO = 'true';
 
 const print = ()=>{
@@ -22,22 +22,53 @@ const print = ()=>{
 
 //Funcion para cargar en el Louder
 const getAllRecipesFromAPI = async ()=>{
+    let record = 0
     try{
-
         const allRecipes = await axios.get(`${URL_ALL}?apiKey=${API_KEY1}&number=${RESULT_NUMBER}&addRecipeInformation=${ADD_INFO}`)
         .then(response => response.data.results)
         .then(results =>{
             results.forEach(async element => {
-                let arrayInstructions = element.analyzedInstructions
+                let arrayInstructions = element.analyzedInstructions[0]
+                let pathToCook = []
+                if(arrayInstructions){
+                    for( key in (arrayInstructions.steps)){
+                        console.log('Step ---->',arrayInstructions.steps[key].step)
+                        //pathToCook.push(arrayInstructions.steps[key].step)
+                    }
+                }
+                let arrayDiets = element.diets //<---- findOrCreate y coloca en la tabla. Luego cargar en la intermedia la id de la receta y de la dieta
+                console.log("----------------------------------------")
 
-                
-                console.log('el tipo de dato es',typeof(arrayInstructions), arrayInstructions)
+
+
+                /*
+                el resultado es una susecion de objetos con la propiedad number, step, los objetos ingredients y equipament
+
+                {
+                    number: 1,
+                    step: "Texto largo",
+                    ingredients: [[objeto1], [objeto2], [objetoN]],
+                    equipament: [[objeto1], [objeto2], [objetoN]]
+                },
+                {
+                    number: 2,
+                    step: "Texto largo",
+                    ingredients: [[objeto1], [objeto2], [objetoN]],
+                    equipament: [[objeto1], [objeto2], [objetoN]]
+                },
+                {
+                    number: N,
+                    step: "Texto largo",
+                    ingredients: [[objeto1], [objeto2], [objetoN]],
+                    equipament: [[objeto1], [objeto2], [objetoN]]
+                },
+                */
     
                 await Recipe.create({
                     id: element.id,
                     title: element.title,
                     image: element.image,
-                    //summary: element.summary,
+                    summary: element.summary,
                     spoonacularScore: element.spoonacularScore,
                     healthScore: element.healthScore,
                     //steps: arraySteps
