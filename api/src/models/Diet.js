@@ -11,6 +11,7 @@ module.exports = (sequelize) => {
     },
     category: { //propiedad de primer orden
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     }
   },{

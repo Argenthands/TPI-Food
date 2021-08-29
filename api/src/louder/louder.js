@@ -49,16 +49,20 @@ const getAllRecipesFromAPI = async ()=>{
                 })
 
                 let arrayDiets = element.diets
+                let category = ""
+                console.log("--------------------------------------------------------------------")
                 //Recorro las categorias de dieta que 
                 for(let i=0; i < arrayDiets.length; i++){
+                    category = arrayDiets[i]
                     //Agrego los registros no repetidos a la tabla de dietas
-                    let newDiet = await Diet.findOrCreate({
+                    await Diet.findOrCreate({
                         where:{
-                            category: arrayDiets[i]
+                            category: category
                         }
                     })
                     //Agrego el registro de la relacion a la tabla intermedia
                     //newDiet.addRecipe([newRecipe])
+                    //let newRelation = await 
                 }
             })
         })
