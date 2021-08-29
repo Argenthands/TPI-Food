@@ -36,36 +36,9 @@ const getAllRecipesFromAPI = async ()=>{
                         pathToCook.push(arrayInstructions.steps[key].step)
                     }
                 }
-                let arrayDiets = element.diets //<---- findOrCreate y coloca en la tabla. Luego cargar en la intermedia la id de la receta y de la dieta
-                console.log("----------------------------------------")
-                console.log(pathToCook.length)
 
-
-
-                /*
-                el resultado es una susecion de objetos con la propiedad number, step, los objetos ingredients y equipament
-
-                {
-                    number: 1,
-                    step: "Texto largo",
-                    ingredients: [[objeto1], [objeto2], [objetoN]],
-                    equipament: [[objeto1], [objeto2], [objetoN]]
-                },
-                {
-                    number: 2,
-                    step: "Texto largo",
-                    ingredients: [[objeto1], [objeto2], [objetoN]],
-                    equipament: [[objeto1], [objeto2], [objetoN]]
-                },
-                {
-                    number: N,
-                    step: "Texto largo",
-                    ingredients: [[objeto1], [objeto2], [objetoN]],
-                    equipament: [[objeto1], [objeto2], [objetoN]]
-                },
-                */
-    
-                await Recipe.create({
+                //Agrego un registro a la tabla de recetas
+                let newRecipe = await Recipe.create({
                     id: element.id,
                     title: element.title,
                     image: element.image,
@@ -74,6 +47,19 @@ const getAllRecipesFromAPI = async ()=>{
                     healthScore: element.healthScore,
                     steps: pathToCook
                 })
+
+                let arrayDiets = element.diets
+                //Recorro las categorias de dieta que 
+                for(let i=0; i < arrayDiets.length; i++){
+                    //Agrego los registros no repetidos a la tabla de dietas
+                    let newDiet = await Diet.findOrCreate({
+                        where:{
+                            category: arrayDiets[i]
+                        }
+                    })
+                    //Agrego el registro de la relacion a la tabla intermedia
+                    //newDiet.addRecipe([newRecipe])
+                }
             })
         })
         .catch(error => console.log('ERROR',error))
