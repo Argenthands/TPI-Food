@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require("sequelize");
 const { Recipe } = require('../db');
 
 const router = express.Router();
@@ -26,13 +27,15 @@ router.get('/', async function (req, res){
 
 router.get('/title', async function (req, res){
     //const { title } = req.params;
-    //const { title } = req.query; //?
+    const { name } = req.query; // ?title=Cauliflower, Brown Rice, and Vegetable Fried Rice <-- el texto tiene espacios
     //const { title } = req.body; //json
-    title = "Cauliflower, Brown Rice, and Vegetable Fried Rice"
+    //name = "Cauliflower, Brown Rice, and Vegetable Fried Rice"
     try{
-        await Recipe.findOne({
+        await Recipe.findAll({
             where:{
-                title:title
+                title:{
+                    [Op.iLike]:"%"+name+"%"
+                }
             }
         })
         .then(recipe =>{

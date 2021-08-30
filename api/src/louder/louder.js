@@ -9,7 +9,7 @@ const {
   } = process.env;
 
 
-const RESULT_NUMBER = '2';
+const RESULT_NUMBER = '10';
 const ADD_INFO = 'true';
 
 const print = ()=>{
