@@ -60,9 +60,22 @@ const getAllRecipesFromAPI = async ()=>{
                             category: category
                         }
                     })
+                    //como no pude cargar con el metodo add tengo que traerme el id para cargar manualmente en la tabla intermedia
+                    let idTemp = await Diet.findOne({
+                        where:{
+                            category:arrayDiets[i]
+                        }
+                    })
+                    //la respuesta viene en un formato raro
+                    idTemp = await JSON.stringify(idTemp)
+                    idTemp = JSON.parse(idTemp)
+                    idTemp = idTemp.id
                     //Agrego el registro de la relacion a la tabla intermedia
-                    //newDiet.addRecipe([newRecipe])
-                    //let newRelation = await 
+                    //Diet.addRecipe(newRecipe)
+                    await Recipe_Diet.create({
+                        recipeId:element.id,
+                        dietId:idTemp
+                    })
                 }
             })
         })
