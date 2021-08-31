@@ -1,6 +1,6 @@
 const express = require('express');
 const { Op } = require("sequelize");
-const { Recipe } = require('../db');
+const { Recipe, Diet } = require('../db');
 
 const router = express.Router();
 
@@ -21,33 +21,30 @@ Recibe los datos recolectados desde el formulario controlado de la ruta de creac
 Crea una receta en la base de datos
 */
 
-router.get('/', async function (req, res){
-    return res.send('recipes')
-})
 
-router.get('/title', async function (req, res){
+router.get('/', async function (req, res){
     //const { title } = req.params;
-    const { name } = req.query; // ?title=Cauliflower, Brown Rice, and Vegetable Fried Rice <-- el texto tiene espacios
-    //const { title } = req.body; //json
-    //name = "Cauliflower, Brown Rice, and Vegetable Fried Rice"
+    const { name } = req.query;
     try{
         await Recipe.findAll({
             where:{
                 title:{
                     [Op.iLike]:"%"+name+"%"
                 }
-            }
+            },
+            include: [Diet]
         })
-        .then(recipe =>{
-            return res.json(recipe)
+        .then(answer =>{
+            return res.json(answer)
         })
     }
     catch(error){
-        error =>{
+        error =>{ 
             console.log(error)
-            return res.json(error)
+            return res.json('error en query Recipes',error)
         }
-    }
+    }  
 })
+
 
 module.exports = router;

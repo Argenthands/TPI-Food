@@ -8,7 +8,7 @@ const {
     API_KEY2,
   } = process.env;
 
-
+let inputs = 0
 const RESULT_NUMBER = '10';
 const ADD_INFO = 'true';
 
@@ -38,7 +38,7 @@ const getAllRecipesFromAPI = async ()=>{
                 }
 
                 //Agrego un registro a la tabla de recetas
-                let newRecipe = await Recipe.create({
+                await Recipe.create({
                     id: element.id,
                     title: element.title,
                     image: element.image,
@@ -47,10 +47,11 @@ const getAllRecipesFromAPI = async ()=>{
                     healthScore: element.healthScore,
                     steps: pathToCook
                 })
+                inputs +=1;
 
                 let arrayDiets = element.diets
                 let category = ""
-                console.log("--------------------------------------------------------------------")
+                console.log("New Recipe Created", inputs)
                 //Recorro las categorias de dieta que 
                 for(let i=0; i < arrayDiets.length; i++){
                     category = arrayDiets[i]
