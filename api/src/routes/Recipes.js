@@ -1,7 +1,7 @@
 const express = require('express');
 const { Op } = require("sequelize");
 const { Recipe, Diet } = require('../db');
-
+const { addRecipe } = require('../controler/addRecipe');
 const router = express.Router();
 
 
@@ -69,7 +69,7 @@ router.get('/id/:id', async function (req, res){
 })
 
 //body
-router.post('/',async function (req, res){
+router.post('/add',async function (req, res){
     const {
         title,
         image,
@@ -78,26 +78,22 @@ router.post('/',async function (req, res){
         healthScore,
         steps
     } = req.body;
-    if(title, summary){
-        try{
-            await Recipe.create({
-                id: 'id',
-                title: title,
-                image: image,
-                summary: summary,
-                spoonacularScore: spoonacularScore,
-                healthScore: healthScore,
-                steps: steps
-            })
-        }
-        catch(error){
-            error =>{ 
-                console.log('error en Post Recipes',error)
-                return res.json('error en Post Recipes',error)
-            }
-        }  
+    try{
+        return res.json(await addRecipe(
+            title,
+            image,
+            summary,
+            spoonacularScore,
+            healthScore,
+            steps
+        ))
     }
+    catch(error){
+        error =>{ 
+            console.log('error en  addRecipes',error)
+            return res.json('error en addRecipes',error)
+        }
+    }  
 })
-
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { response } = require('../app');
+//const { response } = require('../app');
 const { Recipe, Diet, Recipe_Diet } = require('../db');
 
 const {
@@ -9,7 +9,7 @@ const {
   } = process.env;
 
 let inputs = 0
-const RESULT_NUMBER = '10';
+const RESULT_NUMBER = '100';
 const ADD_INFO = 'true';
 
 const print = ()=>{
