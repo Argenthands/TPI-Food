@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     summary: { // propiedad de primer orden
       type: DataTypes.STRING(2000), //tengo problemas con la extencion del texto

@@ -21,9 +21,9 @@ Recibe los datos recolectados desde el formulario controlado de la ruta de creac
 Crea una receta en la base de datos
 */
 
-
+//query
 router.get('/', async function (req, res){
-    //const { title } = req.params;
+    //?name=algo
     const { name } = req.query;
     try{
         await Recipe.findAll({
@@ -40,10 +40,63 @@ router.get('/', async function (req, res){
     }
     catch(error){
         error =>{ 
-            console.log(error)
+            console.log('error en query Recipes',error)
             return res.json('error en query Recipes',error)
         }
     }  
+})
+
+//params
+router.get('/id/:id', async function (req, res){
+    const { id } = req.params;
+    try{
+        await Recipe.findAll({
+            where:{
+                id:id
+            },
+            include: [Diet]
+        })
+        .then(answer =>{
+            return res.json(answer)
+        })
+    }
+    catch(error){
+        error =>{ 
+            console.log('error en id Recipes',error)
+            return res.json('error en id Recipes',error)
+        }
+    }  
+})
+
+//body
+router.post('/',async function (req, res){
+    const {
+        title,
+        image,
+        summary,
+        spoonacularScore,
+        healthScore,
+        steps
+    } = req.body;
+    if(title, summary){
+        try{
+            await Recipe.create({
+                id: 'id',
+                title: title,
+                image: image,
+                summary: summary,
+                spoonacularScore: spoonacularScore,
+                healthScore: healthScore,
+                steps: steps
+            })
+        }
+        catch(error){
+            error =>{ 
+                console.log('error en Post Recipes',error)
+                return res.json('error en Post Recipes',error)
+            }
+        }  
+    }
 })
 
 
