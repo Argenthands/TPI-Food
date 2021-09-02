@@ -1,0 +1,38 @@
+
+.Landing {
+    background: url("./utensilios-imprescindibles-cocina.jpg");
+    min-height: 100%;
+    min-width: 1024px;
+    
+    opacity: 80%;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+      
+    /* Set up positioning */
+    position: fixed;
+    top: 10;
+    left: 0;
+}
+
+.Header {
+    margin-top: 280px;
+    font-size: 50px;
+    color: maroon;
+}
+
+
+.goHome{
+    box-shadow:inset 0px 1px 0px 0px wheat;
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	background-color:white;
+	border-radius:6px;
+	border:1px solid black;
+	cursor:pointer;
+	color:black;
+	font-size:25px;
+	font-weight:bold;
+	padding:10px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}

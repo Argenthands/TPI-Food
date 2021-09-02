@@ -6,12 +6,17 @@ import axios from 'axios';
 import './App.css';
 
 import Card from "./components/Card";
+import LandingPage from "./components/Landing/Landing";
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Card} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/home">
+          <Card/>
+          <Card/>
+        </Route>
       </Switch>
     </div>
   );
