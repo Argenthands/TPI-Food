@@ -1,13 +1,22 @@
+//librerias y modulos externos
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
+//archivos internos
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { store } from "./redux/store"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
