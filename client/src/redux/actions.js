@@ -1,6 +1,7 @@
-export  function getRecipes(data) {
+export const addAllFromApiWeb = (answer) =>{
     return {
-        type: 'GET_RECIPES',
-        payload: data
+        type: "GET_RECIPES",
+        payload: answer
     }
 }
+  
