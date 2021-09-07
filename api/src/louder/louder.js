@@ -24,7 +24,8 @@ const print = ()=>{
 const getAllRecipesFromAPI = async ()=>{
     let record = 0
     try{
-        const allRecipes = await axios.get(`${URL_ALL}?apiKey=${API_KEY1}&number=${RESULT_NUMBER}&addRecipeInformation=${ADD_INFO}`)
+        const allRecipes = await axios.get(
+            `${URL_ALL}?apiKey=${API_KEY1}&number=${RESULT_NUMBER}&addRecipeInformation=${ADD_INFO}`)
         .then(response => response.data.results)
         .then(results =>{
             results.forEach(async element => {

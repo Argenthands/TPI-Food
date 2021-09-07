@@ -14,7 +14,7 @@ const addRecipe = async function (
     //voy a tener que consultar cual es la clave que sigue
     let newId = 1165540
     let maxId = await Recipe.max('id');
-    console.log("la id Maxima es --> ",maxId," es de tipo ", typeof(maxId))
+    //console.log("la id Maxima es --> ",maxId," es de tipo ", typeof(maxId))
     if(maxId < 1165540){
         newId = 1165540
     }else{
