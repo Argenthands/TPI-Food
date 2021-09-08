@@ -21,6 +21,23 @@ Recibe los datos recolectados desde el formulario controlado de la ruta de creac
 Crea una receta en la base de datos
 */
 
+router.get('/all', async function (req, res){
+    try{
+        await Recipe.findAll({
+            include: [Diet]
+        })
+        .then(answer =>{
+            return res.json(answer)
+        })
+    }
+    catch(err){
+        err =>{
+            console.log('error en get all from local api',err)
+            return res.json('error en get all from local api',err)
+        }
+    }
+})
+
 //query
 router.get('/', async function (req, res){
     //?name=algo

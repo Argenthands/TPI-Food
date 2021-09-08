@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 //import axios from 'axios';
 import './App.css';
 
-//import Card from "./components/Card/Card";
+//import de componentes
 import Home from "./components/Home/Home";
 import LandingPage from "./components/Landing/Landing";
 import NavBar from "./components/NavBar/NavBar";

@@ -1,12 +1,10 @@
-
-
 .Body {
     background: url("./ShuljanBishul.jpg");
-    width:340px;
-    height:440px;
-    border-radius:8px;
+    width: 1280px;
+    height: 720px;
+    border-radius:190px;
     box-shadow:0 0 40px -10px #000;
-    margin:calc(50vh - 220px) auto;
+    margin: auto;
     padding:20px 30px;
     max-width:calc(100vw - 40px);
     box-sizing:border-box;
@@ -14,31 +12,24 @@
     position:relative;
 }
 
-.ListElement {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-.Lables {
-    color: azure;
-}
-
-.FormsTrue {
-    border-radius: 2px;
-    border-color: black;
-    background-color: aliceblue;
+.Inputs {
+    padding: 9px;
+    border-radius: 9999em;
     color: black;
+    font-size: large;
 }
 
-.FormsFalse {
-    border-radius: 2px;
-    box-shadow: 12px;
-    border-color: orangered;
-    background-color: brown;
-    color: aliceblue;
-}
-
-body{
-    background:#59ABE3;margin:0
+.chekForm {
+    
+    background: url("./checkNote.jpg");
+    background-position: 50% 70%;
+    background-size: 120%;
+    border-radius:10px;
+    width: 200px;
+    margin-left: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    font-size: large;
 }

@@ -6,8 +6,16 @@ import Card from "../Card/Card";
 
 const Home = ()=>{
     const props = store.getState();
-    let allRecipes = props.reducer.recipes
-    //console.log(allRecipes)
+    let allRecipesWeb = props.reducer.recipesWeb
+
+    let dbRecipes = props.reducer.recipesDb
+    console.log(dbRecipes) //<------------------- estoy viendo como traer las recetas de la base de datos
+    let allRecipes = allRecipesWeb;
+    for(let i=0; i<dbRecipes.length; i++){
+        allRecipes.push(dbRecipes[i])
+    }
+
+    console.log(allRecipes)
     return(
         <div className={HomeStyle.Home}>
             {allRecipes.map((props)=>(
