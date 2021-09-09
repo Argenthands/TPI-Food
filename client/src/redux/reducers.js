@@ -17,18 +17,21 @@ const initialState = {
 
 function rootReducer(state = initialState, action) {
 	switch (action.type) {
+
 		case "GET_RECIPES_WEB":{
 			return {
 				...state,
 				recipesWeb: action.payload
 			}
 		}
+
 		case "GET_RECIPES_DB":{
 			return {
 				...state,
 				recipesDb: action.payload
 			}
 		}
+		
 		default:{
 			return state;
 		}

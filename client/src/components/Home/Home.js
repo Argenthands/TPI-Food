@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"; //, useState
+import { useDispatch } from "react-redux";//, useSelector
 import axios from "axios";
 import { store } from "../../redux/store";
 //import { Link } from "react-router-dom";
-import { getAllfromDb } from "../../redux/actions";
+import { getAllfromDb, } from "../../redux/actions";
 import HomeStyle from "./Home.module.css";
 import Card from "../Card/Card";
 
@@ -17,8 +17,7 @@ const Home = ()=>{
                     "http://localhost:3001/recipe/all"
                     )
                 answer = answer.data
-                console.log("ENTRE AL USE EFFECT",answer)
-                return dispatch(getAllfromDb(answer))
+                dispatch(getAllfromDb(answer))
             }
             catch(err){
                 console.log("ERROR DEL USE EFFECT", err)

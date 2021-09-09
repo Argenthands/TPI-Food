@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";//, useEffect 
 import { useDispatch} from "react-redux";
 
 import { newRecipe } from "../../redux/actions"
@@ -34,11 +34,12 @@ const FormAdRecipe = ()=>{
         newData [event.target.id] = event.target.checked
         setData(newData)
     }
+    /*
     //me falta agregar las dietas
     const onChange = event =>{
         data.diets.push(event.target.value)
     }
-    
+    */
     const onSubmit = (event) => {
         event.preventDefault();
         if (!data.title) {
@@ -67,7 +68,7 @@ const FormAdRecipe = ()=>{
 
             <form>
 
-                <input className={FormStyle.Inputs} id="Score" onChange={event => handleOnChange(event)} type="number" placeholder="Score"/>
+                <input className={FormStyle.Inputs} id="spoonacularScore" onChange={event => handleOnChange(event)} type="number" placeholder="Score"/>
 
                 <input className={FormStyle.Inputs} id="healthScore" onChange={event => handleOnChange(event)} type="number" placeholder="Health Score"/>
             </form>

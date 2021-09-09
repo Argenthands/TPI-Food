@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"; //, useState
+import { useDispatch } from "react-redux"; //, useSelector
 import axios from "axios";
 import { Link } from "react-router-dom";
 //import { store } from "../../redux/store";
@@ -18,7 +18,7 @@ export default function LandingPage() {
                 )
                 answer = answer.data.results
                 dispatch(addAllFromApiWeb(answer))
-                console.log("ENTRE AL USE EFFECT",answer)
+                console.log("ENTRE AL USE EFFECT, Array =", Array.isArray(answer), answer)
             }
             catch(err){
                 console.log("ERRPR DEL USE EFFECT",err)
