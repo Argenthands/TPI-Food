@@ -2,33 +2,43 @@ const initialState = {
 	//Lista de recetas
 	recipesWeb: [],
 	recipesDb: [],
-	//Formato de Receta
-	recipe: {
-		id: 0,
-		title: "",
-		image: "",
-		summary: "",
-		spoonacularScore: 0,
-		healthScore: 0,
-		//lista de pasos para cocinar
-		steps: []
-	},
+	//Filtros
+	dietFilters: [],
+	recipeDiets:[],
+	//Paginado
+	currentPage:1,
+  	itemsPerPage:9,
 };
 
 function rootReducer(state = initialState, action) {
 	switch (action.type) {
 
 		case "GET_RECIPES_WEB":{
-			return {
+			return{
 				...state,
 				recipesWeb: action.payload
 			}
 		}
 
 		case "GET_RECIPES_DB":{
-			return {
+			return{
 				...state,
 				recipesDb: action.payload
+			}
+		}
+
+		case "ADD_DIET_FILTER":{
+			return{
+				...state,
+				dietFilters: state.dietFilters.includes(action.payload)?
+				state.dietFilters:state.dietFilters.concat(action.payload)
+			}
+		}
+
+		case "REMOVE_DIET_FILTER":{
+			return{
+				...state,
+				dietFilters: state.dietFilters.filter(df => df !== action.payload)
 			}
 		}
 		

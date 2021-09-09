@@ -1,16 +1,30 @@
 import axios from "axios"
 
-export const addAllFromApiWeb = (answer)=>{
-    return {
+export const addAllFromApiWeb = answer =>{
+    return{
         type: "GET_RECIPES_WEB",
         payload: answer
     }
 }
 
-export const getAllfromDb = (answer)=>{
-    return {
+export const getAllfromDb = answer =>{
+    return{
         type: "GET_RECIPES_DB",
         payload: answer
+    }
+}
+
+export const addDietFilter = addFilter =>{
+    return{
+        type: "ADD_DIET_FILTER",
+        payload: addFilter
+    }
+}
+
+export const removeDietFilter = outFilter =>{
+    return{
+        type: "REMOVE_DIET_FILTER",
+        payload: outFilter
     }
 }
 

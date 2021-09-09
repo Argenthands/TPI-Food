@@ -5,7 +5,9 @@ import { store } from "../../redux/store";
 //import { Link } from "react-router-dom";
 import { getAllfromDb, } from "../../redux/actions";
 import HomeStyle from "./Home.module.css";
+import FilterBar from "../FilterBar/FilterBar";
 import Card from "../Card/Card";
+import FootBar from "../FootBar/FootBar";
 
 const Home = ()=>{
 
@@ -32,9 +34,17 @@ const Home = ()=>{
 
     return(
         <div className={HomeStyle.Home}>
-            {allRecipes.map((props)=>(
-                <Card key={props.id} props={props}/>
-            ))}
+            <header>
+                <FilterBar />
+            </header>
+            <div>
+                {allRecipes.map((props)=>(
+                    <Card key={props.id} props={props}/>
+                ))}
+            </div>
+            <footer>
+                <FootBar />
+            </footer>
         </div>
     )
 }
