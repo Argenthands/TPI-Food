@@ -39,14 +39,15 @@ const FormAdRecipe = ()=>{
         data.diets.push(event.target.value)
     }
     
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = (event) => {
+        event.preventDefault();
         if (!data.title) {
           return alert("Please enter a title for your recipe");
         }
         if (!data.summary) {
           return alert("Please enter a resume of your recipe");
         }
+        console.log(data)
         dispatch(newRecipe(data));
         alert("Recipe was sucessfully created");
       };

@@ -1,7 +1,7 @@
 const initialState = {
 	//Lista de recetas
 	recipesWeb: [],
-	recipesDb: ["Primer Receta", "Segunda Receta"],
+	recipesDb: [],
 	//Formato de Receta
 	recipe: {
 		id: 0,
@@ -24,12 +24,6 @@ function rootReducer(state = initialState, action) {
 			}
 		}
 		case "GET_RECIPES_DB":{
-			return {
-				...state,
-				recipesDb: action.payload
-			}
-		}
-		case "ADD_NEW_RECIPE":{
 			return {
 				...state,
 				recipesDb: action.payload

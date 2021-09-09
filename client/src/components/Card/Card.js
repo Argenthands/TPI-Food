@@ -11,7 +11,7 @@ const Card = (props)=>{
 
     let title = props.props.title
     let image = props.props.image
-    //let summary = props.props.summary
+    //let summary = props.props.summary <---->   replace(/<[^>]*>?/g, '')}
 
     return(
         <div className={CardStyle.Card}>

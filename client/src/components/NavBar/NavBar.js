@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = ()=>{ //como mierda accedo al store de redux
     return(
-        <div >
+        <nav >
             <ul>
                 <li>
                     <Link to="/Home">Home</Link>
@@ -18,7 +18,7 @@ const NavBar = ()=>{ //como mierda accedo al store de redux
                     <Link to="/">Landing</Link>
                 </li>
             </ul>
-        </div>
+        </nav>
     )
 }
 

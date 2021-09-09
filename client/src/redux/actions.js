@@ -7,32 +7,23 @@ export const addAllFromApiWeb = (answer)=>{
     }
 }
 
-export const getllfromDb = (dbAnswer)=>{
+export const getAllfromDb = (answer)=>{
     return {
         tyep: "GET_RECIPES_DB",
-        payload: dbAnswer
+        payload: answer
     }
 }
-/*
+
+//Funcion para enviar a la base de datos
 export const newRecipe = (recipe)=>{
-    return {
-        type: "ADD_NEW_RECIPE",
-        payload: recipe
+    return async () => {
+        let recipesDB = await axios.post(`http://localhost:3001/recipe/add`, {
+            title: recipe.title,
+            summary: recipe.summary,
+            spoonacularScore: recipe.spoonacularScore,
+            image: recipe.image,
+            healthScore: recipe.healthScore,
+        })
+        console.log(recipesDB)
     }
 }
-*/
-export function newRecipe(recipe) {
-    return async (dispatch) => {
-      const recipes_bd = await axios.post(`http://localhost:3001/recipe/add`, {
-        title: recipe.title,
-        summary: recipe.summary,
-        spoonacularScore: recipe.spoonacularScore,
-        image: recipe.image,
-        healthScore: recipe.healthScore,
-      });
-      dispatch({
-        type: "ADD_NEW_RECIPE",
-        payload: recipe
-    });
-    };
-  }

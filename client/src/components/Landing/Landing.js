@@ -10,18 +10,17 @@ export default function LandingPage() {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        const data = async() =>{
+    useEffect(()=>{
+        const data = async()=>{
             try{
                 let answer = await axios.get(
                     "https://api.spoonacular.com/recipes/complexSearch?apiKey=6559f189ce464b11a06f9cc77af34437&number=100&addRecipeInformation=true"
-                    
                 )
                 answer = answer.data.results
                 dispatch(addAllFromApiWeb(answer))
-                console.log("ENTRE AL USE EFFECT")
+                console.log("ENTRE AL USE EFFECT",answer)
             }
-            catch (err) {
+            catch(err){
                 console.log("ERRPR DEL USE EFFECT",err)
             }
         }
