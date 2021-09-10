@@ -1,6 +1,6 @@
 .FilterBar{
-    background-color: red;
-    color: black;
+    background-color: #333;
+    color: white;
 }
 
 .Inputs {
@@ -12,6 +12,7 @@
 
 .chekForm {
     background: url("./checkNote.jpg");
+    color: black;
     background-position: 50% 70%;
     background-size: 120%;
     border-radius:10px;

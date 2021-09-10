@@ -3,11 +3,19 @@ const initialState = {
 	recipesWeb: [],
 	recipesDb: [],
 	//Filtros
-	dietFilters: [],
+	dietFilters: {
+        vegetarian: false,
+        vegan: false,
+        glutenFree: false,
+        dairyFree: false,
+        veryHealthy: false,
+        cheap: false,
+        sustainable: false,
+    },
 	recipeDiets:[],
 	//Paginado
 	currentPage:1,
-  	itemsPerPage:9,
+  	itemsPerPages:9,
 };
 
 function rootReducer(state = initialState, action) {
@@ -27,18 +35,17 @@ function rootReducer(state = initialState, action) {
 			}
 		}
 
-		case "ADD_DIET_FILTER":{
+		case "CHANGE_DIET_FILTER":{
 			return{
 				...state,
-				dietFilters: state.dietFilters.includes(action.payload)?
-				state.dietFilters:state.dietFilters.concat(action.payload)
+				dietFilters: action.payload
 			}
 		}
 
-		case "REMOVE_DIET_FILTER":{
+		case "CHANGE_PAGE":{
 			return{
 				...state,
-				dietFilters: state.dietFilters.filter(df => df !== action.payload)
+				currentPage: action.payload
 			}
 		}
 		

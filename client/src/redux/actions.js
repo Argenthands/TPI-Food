@@ -14,17 +14,17 @@ export const getAllfromDb = answer =>{
     }
 }
 
-export const addDietFilter = addFilter =>{
+export const changeDietFilter = filters =>{
     return{
-        type: "ADD_DIET_FILTER",
-        payload: addFilter
+        type: "CHANGE_DIET_FILTER",
+        payload: filters
     }
 }
 
-export const removeDietFilter = outFilter =>{
+export const changePage = page =>{
     return{
-        type: "REMOVE_DIET_FILTER",
-        payload: outFilter
+        type: "CHANGE_PAGE",
+        payload: page
     }
 }
 

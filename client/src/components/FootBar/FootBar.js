@@ -3,9 +3,9 @@ import FootBarStyle from "./FootBar.module.css";
 
 const FootBar = () => {
     return (
-        <div className={FootBarStyle.FootBar}>
+        <footer className={FootBarStyle.FootBar}>
             <p>este es el pie de pagina</p>
-        </div>
+        </footer>
     )
 }
 

@@ -1,13 +1,12 @@
 import React, { useEffect } from "react"; //, useState
-import { useDispatch } from "react-redux";//, useSelector
+import { useDispatch } from "react-redux";//, useSelector en lugar de importar el store y traer con useState
 import axios from "axios";
 import { store } from "../../redux/store";
 //import { Link } from "react-router-dom";
 import { getAllfromDb, } from "../../redux/actions";
 import HomeStyle from "./Home.module.css";
 import FilterBar from "../FilterBar/FilterBar";
-import Card from "../Card/Card";
-import FootBar from "../FootBar/FootBar";
+import Pagination from "../Pagination/Pagination";
 
 const Home = ()=>{
 
@@ -28,9 +27,6 @@ const Home = ()=>{
         data()
     }, [])
 
-    const props = store.getState();
-    let allRecipesWeb = props.reducer.recipesWeb
-    let allRecipes = allRecipesWeb;
 
     return(
         <div className={HomeStyle.Home}>
@@ -38,13 +34,8 @@ const Home = ()=>{
                 <FilterBar />
             </header>
             <div>
-                {allRecipes.map((props)=>(
-                    <Card key={props.id} props={props}/>
-                ))}
+                <Pagination />
             </div>
-            <footer>
-                <FootBar />
-            </footer>
         </div>
     )
 }

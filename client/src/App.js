@@ -11,6 +11,7 @@ import Home from "./components/Home/Home";
 import LandingPage from "./components/Landing/Landing";
 import NavBar from "./components/NavBar/NavBar";
 import FormAdRecipe from "./components/FormAdRecipe/FormAdRecipe";
+import FootBar from "./components/FootBar/FootBar";
 
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/Form">
             <FormAdRecipe/>
           </Route>
+          <FootBar/>
         </Route>
       </Switch>
     </div>
