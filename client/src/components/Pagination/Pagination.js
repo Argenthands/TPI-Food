@@ -12,27 +12,44 @@ function Pagination() {
     const [page, setPage] = useState(1)
     
     
-    const allRecipesWeb = props.reducer.recipesWeb
     const allRecipesDb = props.reducer.recipesDb
-    const allRecipes = allRecipesWeb.concat(allRecipesDb)
+    const allRecipesWeb = props.reducer.recipesWeb
+    const allRecipes = allRecipesDb.concat(allRecipesWeb)
     const totalPages = Math.ceil(allRecipes.length / itemsPerPages)
     
-    var tipo = typeof(totalPages)
-
-    return (
+    let showRecipes = []
+    let pagines = []
+    let start = 0
+    let end = 9
+    for(let i=0 ; i<totalPages; i++){
+        pagines.push(i+1)
+        showRecipes.push(allRecipes.slice(start,end))
+        start = start + 9
+        end = end + 9
+    }
+        return (
         <div>
+            <nav className={PaginationStyel.indexBar}>
+                <ul>
+                    {pagines.map(element=>(
+                        <li key={element}>{element}</li>
+                    ))}
+                </ul>
+            </nav>
+            
             <div>
-                {`${totalPages} es ${tipo}`}
-
-            </div>
-            <div>
-                {}
-            </div>
-            <div>
-                {allRecipes.map((props)=>(
+                {allRecipes.map(props=>(
                     <Card key={props.id} props={props}/>
                 ))}
             </div>
+
+            <nav className={PaginationStyel.indexBar}>
+                <ul>
+                    {pagines.map(element=>(
+                        <li key={element}>{element}</li>
+                    ))}
+                </ul>
+            </nav>
         </div>
     )
 }
