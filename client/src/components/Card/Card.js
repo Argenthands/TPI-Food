@@ -18,8 +18,6 @@ const Card = (props)=>{
             <h3 className={CardStyle.Title}>Recipe: {title}</h3>
             <img className={CardStyle.Image} src={image} alt="" />
             <p>description</p>
-
-            
         </div>
     )
 }

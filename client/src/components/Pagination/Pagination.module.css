@@ -1,3 +1,23 @@
 .indexBar{
     color: azure;
 }
+
+.cardsTable{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.buttonIndex{
+    background-color: black;
+    border: gray;
+    color: white;
+    padding: 20px;
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px 15px;
+    border-radius: 50%;
+}

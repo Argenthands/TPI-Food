@@ -14,7 +14,7 @@ const initialState = {
     },
 	recipeDiets:[],
 	//Paginado
-	currentPage:1,
+	currentPage:0,
   	itemsPerPages:9,
 };
 
