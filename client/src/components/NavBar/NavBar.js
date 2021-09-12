@@ -5,7 +5,7 @@ import NavBarStyle from "./NavBar.module.css";
 
 const NavBar = ()=>{ //como mierda accedo al store de redux
     return(
-        <nav >
+        <nav className={NavBarStyle} >
             <ul>
                 <li>
                     <Link to="/">{'<--------------------------------Landing'}</Link>

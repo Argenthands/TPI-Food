@@ -1,22 +1,42 @@
 import React, { useState } from 'react';
-import { useDispatch, } from 'react-redux'; //useSelector en lugar de imporar el store y usar getState
+//import { useDispatch, } from 'react-redux'; //useSelector en lugar de imporar el store y usar getState
 import { store } from "../../redux/store";
 import {} from "../../redux/actions";
 import PaginationStyle from "./Pagination.module.css";
 import Card from "../Card/Card";
 
 function Pagination() {
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
     const props = store.getState()
     const itemsPerPages = props.reducer.itemsPerPages
-    const currentPge = props.reducer.currentPage
-    const [page, setPage] = useState(0)
+    const dietFilters = props.reducer.dietFilters
     
-    const allRecipesDb = props.reducer.recipesDb
-    const allRecipesWeb = props.reducer.recipesWeb
-    const allRecipes = allRecipesDb.concat(allRecipesWeb)
+    let allRecipes = props.reducer.allRecipes
+
+    if(dietFilters.dairyFree){
+        console.log("dairyFree")
+        allRecipes = allRecipes.filter(recipe => recipe.dairyFree)
+    }
+    if(dietFilters.glutenFree){
+        console.log("glutenFree")
+        allRecipes = allRecipes.filter(recipe => recipe.glutenFree)
+    }
+    if(dietFilters.vegan){
+        console.log("vegan")
+        allRecipes = allRecipes.filter(recipe => recipe.vegan)
+    }
+    if(dietFilters.vegetarian){
+        console.log("vegetarian")
+        allRecipes = allRecipes.filter(recipe => recipe.vegetarian)
+    }
+    if(dietFilters.veryHealthy){
+        console.log("veryHealthy")
+        allRecipes = allRecipes.filter(recipe => recipe.veryHealthy)
+    }
+    
     const totalPages = Math.ceil(allRecipes.length / itemsPerPages)
     
+    const [page, setPage] = useState(0)
     let showRecipes = []
     let pagines = []
     if(allRecipes.length > 0){
@@ -29,9 +49,21 @@ function Pagination() {
             end = end + 9
         }
     }
+    else{
+        showRecipes = props.reducer.emptyRecipe
+    }
 
     return (
+
         <div>
+
+            <button
+                type="button"
+                onClick={()=> setPage(0)}
+            > 
+                Applay Filters 
+            </button>
+
             <form className={PaginationStyle.indexBar}>
                 {pagines.map(element=>(
                     <button 

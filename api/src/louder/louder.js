@@ -81,15 +81,40 @@ const getAllRecipesFromAPI = async ()=>{
                 }
             })
         })
-        .catch(error => console.log('ERROR',error))
+        .catch(error => console.log('error de louder',error))
     }
     catch (error){
-        console.error('error',error)
+        console.error('error en el louder',error)
     }
+}
+
+
+const initializeDietTable = async ()=>{
+    const evalueCategories = [
+        "vegetarian",
+        "vegan",
+        "glutenFree",
+        "dairyFree",
+        "veryHealthy"
+    ];
+    
+    for(let i=0; i<evalueCategories.length;i++){
+        try{
+            await Diet.findOrCreate({
+                where:{
+                    category: evalueCategories[i]
+                }
+            })
+        }
+        catch(err){
+            console.log("Error cargando la tabla Dietas", err)
+        }
+    }    
 }
 
 
 module.exports = {
     print,
-    getAllRecipesFromAPI
+    getAllRecipesFromAPI,
+    initializeDietTable
 }

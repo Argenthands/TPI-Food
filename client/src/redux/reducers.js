@@ -2,6 +2,7 @@ const initialState = {
 	//Lista de recetas
 	recipesWeb: [],
 	recipesDb: [],
+	allRecipes: [],
 	//Filtros
 	dietFilters: {
         vegetarian: false,
@@ -9,10 +10,58 @@ const initialState = {
         glutenFree: false,
         dairyFree: false,
         veryHealthy: false,
-        cheap: false,
-        sustainable: false,
     },
 	recipeDiets:[],
+	emptyRecipe:[
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+		{
+			title:"There is no result for your search",
+			summary: "There is no result for your search"
+		},
+	],
 	//Paginado
 	currentPage:0,
   	itemsPerPages:9,
@@ -24,14 +73,16 @@ function rootReducer(state = initialState, action) {
 		case "GET_RECIPES_WEB":{
 			return{
 				...state,
-				recipesWeb: action.payload
+				recipesWeb: action.payload,
+				allRecipes: action.payload
 			}
 		}
 
 		case "GET_RECIPES_DB":{
 			return{
 				...state,
-				recipesDb: action.payload
+				allRecipes: state.recipesWeb.concat(action.payload),
+				recipesDb: action.payload,
 			}
 		}
 
@@ -46,6 +97,13 @@ function rootReducer(state = initialState, action) {
 			return{
 				...state,
 				currentPage: action.payload
+			}
+		}
+
+		case "APPLY_FILTER":{
+			return{
+				...state,
+				allRecipes: state.allRecipes.filter(recipe => recipe.vegetarian === state.dietFilters.vegetarian)
 			}
 		}
 		

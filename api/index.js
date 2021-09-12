@@ -20,13 +20,18 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 
-//const { print, getAllRecipesFromAPI } = require('./src/louder/louder');
+const {
+  print,
+  getAllRecipesFromAPI,
+  initializeDietTable
+} = require('./src/louder/louder');
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     //print();
     //getAllRecipesFromAPI();
+    initializeDietTable()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
