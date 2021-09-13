@@ -6,10 +6,13 @@ import Description from "../Description/Description";
 
 const Card = (props)=>{
 
+    const { vegetarian, title, image, summary } = props.props
+    /*
     let title = props.props.title
     let image = props.props.image
     let summary = props.props.summary
     //summary.replace(/<[^>]*>?/g, '')
+    */
 
     return(
         <div className={CardStyle.Card}>

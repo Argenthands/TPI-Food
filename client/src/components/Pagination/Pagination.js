@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //import { useDispatch, } from 'react-redux'; //useSelector en lugar de imporar el store y usar getState
 import { store } from "../../redux/store";
 import {} from "../../redux/actions";
@@ -12,33 +12,29 @@ function Pagination() {
     const dietFilters = props.reducer.dietFilters
     
     let allRecipes = props.reducer.allRecipes
+    
+    const [page, setPage] = useState(0)
+    let showRecipes = [] // esto es lo que le paso a las cartas como props
+    let pagines = [] // las paginas que maepa el la barra de paginas
 
     if(dietFilters.dairyFree){
-        console.log("dairyFree")
         allRecipes = allRecipes.filter(recipe => recipe.dairyFree)
     }
     if(dietFilters.glutenFree){
-        console.log("glutenFree")
         allRecipes = allRecipes.filter(recipe => recipe.glutenFree)
     }
     if(dietFilters.vegan){
-        console.log("vegan")
         allRecipes = allRecipes.filter(recipe => recipe.vegan)
     }
     if(dietFilters.vegetarian){
-        console.log("vegetarian")
         allRecipes = allRecipes.filter(recipe => recipe.vegetarian)
     }
     if(dietFilters.veryHealthy){
-        console.log("veryHealthy")
         allRecipes = allRecipes.filter(recipe => recipe.veryHealthy)
     }
+
+    let totalPages = Math.ceil(allRecipes.length / itemsPerPages)
     
-    const totalPages = Math.ceil(allRecipes.length / itemsPerPages)
-    
-    const [page, setPage] = useState(0)
-    let showRecipes = []
-    let pagines = []
     if(allRecipes.length > 0){
         let start = 0
         let end = 9
@@ -53,15 +49,20 @@ function Pagination() {
         showRecipes = props.reducer.emptyRecipe
     }
 
+    const [render, setRender]=useState(true) // <----- esto es un choreo
+
     return (
 
         <div>
 
             <button
                 type="button"
-                onClick={()=> setPage(0)}
+                onClick={()=> {
+                    setRender(!render)
+                    setPage(0)
+                }}
             > 
-                Applay Filters 
+                Apply Filters 
             </button>
 
             <div className={PaginationStyle.indexBar}>
@@ -70,7 +71,10 @@ function Pagination() {
                         className={PaginationStyle.buttonIndex}
                         key={element}
                         type="button"
-                        onClick={()=> setPage(element-1)}
+                        onClick={()=> {
+                            console.log()
+                            setPage(element-1)
+                        }}
                     >
                         {element}
                     </button>
