@@ -93,7 +93,14 @@ router.post('/add',async function (req, res){
         summary,
         spoonacularScore,
         healthScore,
-        steps
+        steps,
+
+        vegetarian,
+        vegan,
+        glutenFree,
+        dairyFree,
+        veryHealthy,
+
     } = req.body;
     try{
         return res.json(await addRecipe(
@@ -102,7 +109,13 @@ router.post('/add',async function (req, res){
             summary,
             spoonacularScore,
             healthScore,
-            steps
+            steps,
+
+            vegetarian,
+            vegan,
+            glutenFree,
+            dairyFree,
+            veryHealthy,
         ))
     }
     catch(error){
