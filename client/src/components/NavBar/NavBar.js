@@ -10,11 +10,17 @@ const NavBar = ()=>{ //como mierda accedo al store de redux
                 <li>
                     <Link to="/">{'<--------------------------------Landing'}</Link>
                 </li>
+                
                 <li>
                     <Link to="/Home">Home</Link>
                 </li>
+
                 <li>
                     <Link to="/Form">Form</Link>
+                </li>
+
+                <li>
+                    <Link to="/Search">Search</Link>
                 </li>
             </ul>
         </nav>

@@ -38,6 +38,12 @@ export const newRecipe = (recipe)=>{
             spoonacularScore: recipe.spoonacularScore,
             image: recipe.image,
             healthScore: recipe.healthScore,
+
+            vegetarian:recipe.vegetarian,
+            vegan:recipe.vegan,
+            glutenFree:recipe.glutenFree,
+            dairyFree:recipe.dairyFree,
+            veryHealthy:recipe.veryHealthy
         })
     }
 }

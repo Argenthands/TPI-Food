@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"; //, useState
 import { useDispatch } from "react-redux";//, useSelector en lugar de importar el store y traer con useState
 import axios from "axios";
-import { store } from "../../redux/store";
+//import { store } from "../../redux/store";
 //import { Link } from "react-router-dom";
 import { getAllfromDb, } from "../../redux/actions";
 import HomeStyle from "./Home.module.css";
