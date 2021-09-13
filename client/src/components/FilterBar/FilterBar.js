@@ -16,8 +16,6 @@ const FilterBar = () => {
         glutenFree: false,
         dairyFree: false,
         veryHealthy: false,
-        cheap: false,
-        sustainable: false,
     });
 
     const dispatch = useDispatch()
@@ -39,6 +37,7 @@ const FilterBar = () => {
                         id="vegetarian" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
+                        checked={dietFilters.vegetarian}
                     />
                 </div>
 
@@ -49,6 +48,7 @@ const FilterBar = () => {
                         id="vegan" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
+                        checked={dietFilters.vegan}
                     />
                 </div>
 
@@ -59,6 +59,7 @@ const FilterBar = () => {
                         id="glutenFree" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
+                        checked={dietFilters.glutenFree}
                     />
                 </div>
                 
@@ -69,6 +70,7 @@ const FilterBar = () => {
                         id="dairyFree" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
+                        checked={dietFilters.dairyFree}
                     />
                 </div>
 
@@ -79,6 +81,7 @@ const FilterBar = () => {
                         id="veryHealthy" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
+                        checked={dietFilters.veryHealthy}
                     />
                 </div>
 

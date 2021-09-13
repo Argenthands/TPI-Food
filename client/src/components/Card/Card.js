@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //import { store } from "../../redux/store";
 //import { Link } from "react-router-dom";
 import CardStyle from "./Card.module.css";
@@ -14,11 +14,25 @@ const Card = (props)=>{
     //summary.replace(/<[^>]*>?/g, '')
     */
 
+    const [showDescription, setShowDescription] = useState(false)
+
     return(
         <div className={CardStyle.Card}>
             <h3 className={CardStyle.Title}>Recipe: {title}</h3>
             <img className={CardStyle.Image} src={image} alt="" />
+            <button 
+                type="button"
+                onClick={()=> setShowDescription(!showDescription)}
+            >{
+                showDescription?
+                "close Description"
+                :
+                "show Description"
+            }</button>
+            <div>{showDescription &&
             <Description props={summary}/>
+            }
+            </div>
         </div>
     )
 }
