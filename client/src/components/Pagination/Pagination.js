@@ -64,17 +64,18 @@ function Pagination() {
                 Applay Filters 
             </button>
 
-            <form className={PaginationStyle.indexBar}>
+            <div className={PaginationStyle.indexBar}>
                 {pagines.map(element=>(
                     <button 
                         className={PaginationStyle.buttonIndex}
+                        key={element}
                         type="button"
                         onClick={()=> setPage(element-1)}
                     >
                         {element}
                     </button>
                 ))}
-            </form>
+            </div>
             
             <div className={PaginationStyle.cardsTable}>
                 {showRecipes[page].map(props=>(

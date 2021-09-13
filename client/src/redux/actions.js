@@ -7,10 +7,30 @@ export const addAllFromApiWeb = answer =>{
     }
 }
 
-export const getAllfromDb = answer =>{
+export const getAllfromDb = answers =>{
+    let arrayRecipes = []
+    let recipe ={}
+    let diets = []
+    for(let i=0; i<answers.length; i++){
+        console.log("Respuesta de la base de datos",answers[i])
+        recipe.healthScore = answers[i].healthScore
+        recipe.id = answers[i].id
+        recipe.image = answers[i].image
+        recipe.spoonacularScore = answers[i].spoonacularScore
+        recipe.steps = answers[i].steps
+        recipe.summary = answers[i].summary
+        recipe.title = answers[i].title
+        diets = answers[i].diets
+        for(let j=0; j<diets.length; j++){
+            recipe[diets[j].category] = true
+        }
+        arrayRecipes.push(recipe)
+    }
+    console.log(arrayRecipes)
+    
     return{
         type: "GET_RECIPES_DB",
-        payload: answer
+        payload: arrayRecipes
     }
 }
 
