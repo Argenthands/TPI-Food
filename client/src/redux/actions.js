@@ -58,6 +58,7 @@ export const newRecipe = (recipe)=>{
             spoonacularScore: recipe.spoonacularScore,
             image: recipe.image,
             healthScore: recipe.healthScore,
+            steps: recipe.steps,
 
             vegetarian:recipe.vegetarian,
             vegan:recipe.vegan,
@@ -67,3 +68,12 @@ export const newRecipe = (recipe)=>{
         })
     }
 }
+
+//funcion para traer un elemento de la api web
+const API_KEY1 = "6559f189ce464b11a06f9cc77af34437"
+export const searchRecipeFromApiWeb = (id)=>{
+    return async ()=>{
+        await axios.get(`https://api.spoonacular.com/recipes/${id}/information/?apiKey=${API_KEY1}`)
+    }
+}
+//https://api.spoonacular.com/recipes/1/information/?apiKey=6559f189ce464b11a06f9cc77af34437

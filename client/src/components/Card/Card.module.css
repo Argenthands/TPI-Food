@@ -17,3 +17,18 @@
 .Image {
     align-items: flex-end;
 }
+
+.Diets {
+    display: flex;
+    flex-direction: initial;
+    justify-content: space-between;
+    margin: 1%;
+    padding: 1%;
+}
+
+.Diet{
+    margin: auto;
+    color: black;
+    border-color: black;
+    border: solid;
+}

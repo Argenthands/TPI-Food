@@ -18,22 +18,23 @@ const FormAdRecipe = ()=>{
         spoonacularScore: 0,
         image: "",
         healthScore: 0,
-        analyzedInstructions: [],
+        steps: [],
         diets: [],
     });
-    
     const handleOnChange = event =>{
         const newData = { ...data }
         newData[event.target.id] = event.target.value
         setData(newData)
     }
+
     const handleOnCheck = event =>{
         const newData = { ...data }
         newData [event.target.id] = event.target.checked
         setData(newData)
     }
 
-    const onSubmit = (event) => {
+
+    const onSubmit = event => {
         event.preventDefault();
         if (!data.title) {
           return alert("Please enter a title for your recipe");
@@ -41,23 +42,6 @@ const FormAdRecipe = ()=>{
         if (!data.summary) {
           return alert("Please enter a resume of your recipe");
         }
-        setData(
-            {
-                vegetarian: false,
-                vegan: false,
-                glutenFree: false,
-                dairyFree: false,
-                veryHealthy: false,
-                
-                title: "",
-                summary: "",
-                spoonacularScore: 0,
-                image: "",
-                healthScore: 0,
-                analyzedInstructions: [],
-                diets: [],
-            }
-        )
         alert("Recipe was sucessfully created");
         dispatch(newRecipe(data));
         
@@ -88,20 +72,34 @@ const FormAdRecipe = ()=>{
                     />
                 </form>
 
+
+                <h3>Steps</h3>
+                <form>
+                    <input
+                        className={FormStyle.Inputs}
+                        id="steps"
+                        //onChange={event => handleOnChange(event)}
+                        type="text"
+                        placeholder="step"
+                    />
+                </form>
+
                 <h3>Score</h3>
 
                 <form>
 
                     <input 
                         className={FormStyle.Inputs} 
-                        id="spoonacularScore" onChange={event => handleOnChange(event)} 
+                        id="spoonacularScore" 
+                        onChange={event => handleOnChange(event)} 
                         type="number" 
                         placeholder="Score"
                     />
 
                     <input 
                         className={FormStyle.Inputs} 
-                        id="healthScore" onChange={event => handleOnChange(event)} 
+                        id="healthScore" 
+                        onChange={event => handleOnChange(event)} 
                         type="number" 
                         placeholder="Health Score"
                     />
@@ -112,7 +110,8 @@ const FormAdRecipe = ()=>{
                 <form>
                     <input 
                         className={FormStyle.Inputs} 
-                        id="image" onChange={event => handleOnChange(event)} 
+                        id="image" 
+                        onChange={event => handleOnChange(event)} 
                         type="url" 
                         placeholder="image"
                     /> 
@@ -126,7 +125,8 @@ const FormAdRecipe = ()=>{
                         <label>Vegetarian</label>
                         <input 
                         className={FormStyle.Inputs} 
-                        id="vegetarian" onChange={event => handleOnCheck(event)} 
+                        id="vegetarian" 
+                        onChange={event => handleOnCheck(event)} 
                         type="checkbox" />
                     </div>
 
@@ -134,7 +134,8 @@ const FormAdRecipe = ()=>{
                         <label>Vegan</label>
                         <input 
                         className={FormStyle.Inputs} 
-                        id="vegan" onChange={event => handleOnCheck(event)} 
+                        id="vegan" 
+                        onChange={event => handleOnCheck(event)} 
                         type="checkbox"/>
                     </div>
 
@@ -142,7 +143,8 @@ const FormAdRecipe = ()=>{
                         <label>Gluten Free</label>
                         <input 
                         className={FormStyle.Inputs} 
-                        id="glutenFree" onChange={event => handleOnCheck(event)} 
+                        id="glutenFree" 
+                        onChange={event => handleOnCheck(event)} 
                         type="checkbox"/>
                     </div>
                     
@@ -150,7 +152,8 @@ const FormAdRecipe = ()=>{
                         <label>Dairy Free</label>
                         <input 
                         className={FormStyle.Inputs} 
-                        id="dairyFree" onChange={event => handleOnCheck(event)} 
+                        id="dairyFree" 
+                        onChange={event => handleOnCheck(event)} 
                         type="checkbox"/>
                     </div>
 
@@ -158,7 +161,8 @@ const FormAdRecipe = ()=>{
                         <label>Very Healthy</label>
                         <input 
                         className={FormStyle.Inputs} 
-                        id="veryHealthy" onChange={event => handleOnCheck(event)} 
+                        id="veryHealthy" 
+                        onChange={event => handleOnCheck(event)} 
                         type="checkbox"/>
                     </div>
 

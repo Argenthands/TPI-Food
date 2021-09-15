@@ -34,6 +34,7 @@ const addRecipe = async function (
             dietId: Diet.category = idTemp
         })
     }
+    
     //voy a tener que consultar cual es la clave que sigue
     let newId = 1165540
     let maxId = await Recipe.max('id');
@@ -74,12 +75,12 @@ const addRecipe = async function (
             console.log("veryHealthy =",veryHealthy)
             makeRelation("veryHealthy")
         }
-
+/*
         await Recipe_Diet.create({
             recipeId:newId,
             dietId: Diet.category = idTemp
         })
-
+*/
         return newRecipe
     }
     catch(error){

@@ -6,13 +6,8 @@ import Description from "../Description/Description";
 
 const Card = (props)=>{
 
-    const { vegetarian, title, image, summary } = props.props
-    /*
-    let title = props.props.title
-    let image = props.props.image
-    let summary = props.props.summary
-    //summary.replace(/<[^>]*>?/g, '')
-    */
+    const { title, image, summary } = props.props
+    const { vegetarian, vegan, glutenFree, dairyFree, veryHealthy } = props.props
 
     const [showDescription, setShowDescription] = useState(false)
 
@@ -20,6 +15,15 @@ const Card = (props)=>{
         <div className={CardStyle.Card}>
             <h3 className={CardStyle.Title}>Recipe: {title}</h3>
             <img className={CardStyle.Image} src={image} alt="" />
+
+            <div className={CardStyle.Diets}>
+                <div className={CardStyle.Diet}>{vegetarian && "Vegetarian"}</div>
+                <div className={CardStyle.Diet}>{vegan &&"Vegan"}</div>
+                <div className={CardStyle.Diet}>{glutenFree && "Gluten Free"}</div>
+                <div className={CardStyle.Diet}>{dairyFree && "Dairy Free"}</div>
+                <div className={CardStyle.Diet}>{veryHealthy && "Very Healthy"}</div>
+            </div>
+
             <button 
                 type="button"
                 onClick={()=> setShowDescription(!showDescription)}

@@ -1,19 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
+import { searchRecipeFromApiWeb } from "../../redux/actions";
 import SearchRecipeStyle from "./SearchRecipe.module.css";
 
 const SearchRecipe = () => {
+
+    const dispatch = useDispatch()
+
     return (
         <div className={SearchRecipeStyle.mapa}>
             <form className={SearchRecipeStyle.Body}>
                 <input 
                     className={SearchRecipeStyle.Inputs} 
-                    type="text" 
-                    placeholder="title"
-                />
-                <input 
-                    className={SearchRecipeStyle.Inputs} 
-                    type="text" 
-                    placeholder="title"
+                    type="number" 
+                    placeholder="Id"
                 />
             </form>
             <button>Submit</button>
