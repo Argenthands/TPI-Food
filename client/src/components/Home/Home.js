@@ -11,21 +11,23 @@ import Pagination from "../Pagination/Pagination";
 const Home = ()=>{
 
     const dispatch = useDispatch()
+    /*
     useEffect(()=>{
-        const data = async()=>{
-            try{
-                let answer = await axios.get(
-                    "http://localhost:3001/recipe/all"
-                    )
-                answer = answer.data
-                dispatch(getAllfromDb(answer))
-            }
-            catch(err){
-                console.log("ERROR DEL USE EFFECT", err)
-            }
-        }
-        data()
     }, [])
+    */
+    const data = async()=>{
+        try{
+            let answer = await axios.get(
+                "http://localhost:3001/recipe/all"
+                )
+            answer = answer.data
+            dispatch(getAllfromDb(answer))
+        }
+        catch(err){
+            console.log("ERROR DEL USE EFFECT", err)
+        }
+    }
+    data()
 
 
     return(

@@ -50,7 +50,7 @@ const FormAdRecipe = ()=>{
     return (
         <div className={FormStyle.mapa}>
 
-            <form className={FormStyle.Body} onSubmit={event => onSubmit(event)}>
+            <div className={FormStyle.Body} onSubmit={event => onSubmit(event)}>
                     <h1>Add New Recipe</h1>
                 <form>
                     <h3>Description</h3>
@@ -167,9 +167,10 @@ const FormAdRecipe = ()=>{
                     </div>
 
                 </form>
-
-                <button>Submit</button>
-            </form>
+                <form>
+                    <button>Submit</button>
+                </form>
+            </div>
 
         </div>
 

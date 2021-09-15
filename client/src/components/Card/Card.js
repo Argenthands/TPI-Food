@@ -6,13 +6,13 @@ import Description from "../Description/Description";
 
 const Card = (props)=>{
 
-    const { title, image, summary } = props.props
+    const { title, image, summary, id } = props.props
     const { vegetarian, vegan, glutenFree, dairyFree, veryHealthy } = props.props
 
     const [showDescription, setShowDescription] = useState(false)
 
     return(
-        <div className={CardStyle.Card}>
+        <div className={CardStyle.Card} id={id}>
             <h3 className={CardStyle.Title}>Recipe: {title}</h3>
             <img className={CardStyle.Image} src={image} alt="" />
 
@@ -23,6 +23,8 @@ const Card = (props)=>{
                 <div className={CardStyle.Diet}>{dairyFree && "Dairy Free"}</div>
                 <div className={CardStyle.Diet}>{veryHealthy && "Very Healthy"}</div>
             </div>
+
+            <p>id:{id}</p>
 
             <button 
                 type="button"

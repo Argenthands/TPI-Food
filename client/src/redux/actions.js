@@ -9,7 +9,7 @@ export const addAllFromApiWeb = answer =>{
 
 export const getAllfromDb = answers =>{
     let arrayRecipes = []
-    let recipe ={}
+    let recipe = {}
     let diets = []
     for(let i=0; i<answers.length; i++){
         console.log("Respuesta de la base de datos",answers[i])
@@ -25,8 +25,8 @@ export const getAllfromDb = answers =>{
             recipe[diets[j].category] = true
         }
         arrayRecipes.push(recipe)
+        recipe = {} //<-- esto no tiene sentido pero funciona
     }
-    console.log(arrayRecipes)
     
     return{
         type: "GET_RECIPES_DB",

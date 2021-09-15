@@ -8,14 +8,16 @@ import Card from "../Card/Card";
 function Pagination() {
     //const dispatch = useDispatch()
     const props = store.getState()
-    const itemsPerPages = props.reducer.itemsPerPages
-    const dietFilters = props.reducer.dietFilters
-    
+    const { itemsPerPages, dietFilters } = props.reducer
+    //const itemsPerPages = props.reducer.itemsPerPages
+    //const dietFilters = props.reducer.dietFilters
     let allRecipes = props.reducer.allRecipes
+
+    console.log(allRecipes.length)
     
     const [page, setPage] = useState(0)
     let showRecipes = [] // esto es lo que le paso a las cartas como props
-    let pagines = [] // las paginas que maepa el la barra de paginas
+    let pages = [] // las paginas que maepa el la barra de paginas
 
     if(dietFilters.dairyFree){
         allRecipes = allRecipes.filter(recipe => recipe.dairyFree)
@@ -39,7 +41,7 @@ function Pagination() {
         let start = 0
         let end = 9
         for(let i=0 ; i<totalPages; i++){
-            pagines.push(i+1)
+            pages.push(i+1)
             showRecipes.push(allRecipes.slice(start,end))
             start = start + 9
             end = end + 9
@@ -48,8 +50,7 @@ function Pagination() {
     else{
         showRecipes = props.reducer.emptyRecipe
     }
-
-    const [render, setRender]=useState(true) // <----- esto es un choreo
+    const [render, setRender]=useState(true) // <----- Render
 
     return (
 
@@ -66,13 +67,12 @@ function Pagination() {
             </button>
 
             <div className={PaginationStyle.indexBar}>
-                {pagines.map(element=>(
+                {pages.map(element=>(
                     <button 
                         className={PaginationStyle.buttonIndex}
                         key={element}
                         type="button"
                         onClick={()=> {
-                            console.log()
                             setPage(element-1)
                         }}
                     >

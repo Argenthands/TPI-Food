@@ -81,8 +81,8 @@ function rootReducer(state = initialState, action) {
 		case "GET_RECIPES_DB":{
 			return{
 				...state,
-				allRecipes: state.recipesWeb.concat(action.payload),
 				recipesDb: action.payload,
+				allRecipes: state.recipesWeb.concat(state.recipesDb),
 			}
 		}
 
