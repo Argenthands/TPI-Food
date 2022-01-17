@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
-import { searchRecipeFromApiWeb } from "../../redux/actions";
+import React from 'react'
+//import { useDispatch } from 'react-redux';
+//import { searchRecipeFromApiWeb } from "../../redux/actions";
 import SearchRecipeStyle from "./SearchRecipe.module.css";
 
 const SearchRecipe = () => {
 
-    const dispatch = useDispatch()
+    //const dispatch = useDispatch()
 
     return (
         <div className={SearchRecipeStyle.mapa}>

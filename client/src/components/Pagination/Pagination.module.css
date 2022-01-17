@@ -9,10 +9,24 @@
 }
 
 .buttonIndex{
-    background-color: black;
+    background: linear-gradient(to bottom, black, blue);
     border: gray;
     color: white;
-    padding: 20px;
+    padding: 2%;
+    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px 15px;
+    border-radius: 50%;
+}
+
+.buttonIndex:hover{
+    background: linear-gradient(to bottom, blue, black);
+    border: gray;
+    color: white;
+    padding: 2%;
     
     text-align: center;
     text-decoration: none;

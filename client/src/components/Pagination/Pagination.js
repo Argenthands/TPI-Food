@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 //import { useDispatch, } from 'react-redux'; //useSelector en lugar de imporar el store y usar getState
 import { store } from "../../redux/store";
 import {} from "../../redux/actions";

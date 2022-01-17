@@ -2,7 +2,7 @@ import React, { useState } from 'react'//, useEffect
 
 import { useDispatch } from "react-redux"
 import { store } from "../../redux/store";
-import FilterBarStyle from "./FilterBar.module.css";
+import "./FilterBar.css";
 import { changeDietFilter, } from "../../redux/actions";
 
 const FilterBar = () => {
@@ -20,7 +20,7 @@ const FilterBar = () => {
 
     const dispatch = useDispatch()
     const handleOnCheck = event =>{
-        const newData = { ...data }
+        let newData = { ...data }
         newData [event.target.id] = event.target.checked
         setData(newData)
         dispatch(changeDietFilter(newData))
@@ -28,12 +28,12 @@ const FilterBar = () => {
     }
 
     return (
-        <div className={FilterBarStyle.FilterBar}>
-            <form className={FilterBarStyle.chekForm}>
+        <div className='FilterBar'>
+            <div className='LetsCook'>Lets Cook!</div>
+            <form className='checkForm'>
                 <div>
-                    <label>Vegetarian</label>
+                    <label id="vegetarian">Vegetarian</label>
                     <input 
-                        className={FilterBarStyle.Inputs} 
                         id="vegetarian" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
@@ -42,9 +42,8 @@ const FilterBar = () => {
                 </div>
 
                 <div>
-                    <label>Vegan</label>
+                    <label id="vegan" >Vegan</label>
                     <input 
-                        className={FilterBarStyle.Inputs} 
                         id="vegan" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
@@ -53,9 +52,8 @@ const FilterBar = () => {
                 </div>
 
                 <div>
-                    <label>Gluten Free</label>
+                    <label id="glutenFree" >Gluten Free</label>
                     <input 
-                        className={FilterBarStyle.Inputs} 
                         id="glutenFree" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
@@ -64,9 +62,8 @@ const FilterBar = () => {
                 </div>
                 
                 <div>
-                    <label>Dairy Free</label>
+                    <label id="dairyFree" >Dairy Free</label>
                     <input 
-                        className={FilterBarStyle.Inputs} 
                         id="dairyFree" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"
@@ -75,9 +72,8 @@ const FilterBar = () => {
                 </div>
 
                 <div>
-                    <label>Very Healthy</label>
+                    <label id="veryHealthy" >Very Healthy</label>
                     <input 
-                        className={FilterBarStyle.Inputs} 
                         id="veryHealthy" 
                         onChange={event => handleOnCheck(event)} 
                         type="checkbox"

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 //import { store } from "../../redux/store";
-import NavBarStyle from "./NavBar.module.css";
+import "./NavBar.css";
 
-const NavBar = ()=>{ //como mierda accedo al store de redux
+const NavBar = ()=>{
     return(
-        <nav className={NavBarStyle} >
+        <nav className='NavBar' >
             <ul>
                 <li>
                     <Link to="/">{'<--------------------------------Landing'}</Link>

@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Merriweather:ital,wght@1,300&family=Noto+Sans:ital@1&family=The+Nautigal&display=swap');
+.FilterBar {
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 75% 25%;
+
+}
+.checkForm {
+    grid-column-start: 2;
+}
+.LetsCook{
+    margin-left: 15%;
+    margin-top: 5%;
+    text-align: left;
+    color: black;
+    font-size: 350%;
+    font-family: 'Merriweather', serif;
+}

@@ -34,7 +34,7 @@ export default function LandingPage() {
             }
         }
         data()
-    }, [])
+    }, [dispatch])
 
     return (
         <div className={landing.Landing}>

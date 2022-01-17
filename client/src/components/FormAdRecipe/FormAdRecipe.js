@@ -28,7 +28,7 @@ const FormAdRecipe = ()=>{
     }
 
     const handleOnCheck = event =>{
-        const newData = { ...data }
+        let newData = { ...data }
         newData [event.target.id] = event.target.checked
         setData(newData)
     }
